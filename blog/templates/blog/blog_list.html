@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>MicroBlog</title>
+  </head>
+  <body>
+    <h1>Blog_List</h1>
+
+    <div>
+      {#  {% プログラムの命令(表示されない、組み込みタグ) %} #}
+      {# {{ 値の表示 }} #}
+      {% for blog in object_list %}
+        <div>
+          {{ blog.content }}<br>
+          {{ blog.posted_date }}
+        </div>
+      {% endfor %}
+    </div>
+  </body>
+
+</html>

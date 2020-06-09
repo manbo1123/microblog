@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from blog.views import BlogListView
+# リクエスト → url.py  → ビュー → テンプレート → レスポンス
 urlpatterns = [
+    # path('<URL>', views(関数), ニックネーム),
+    path('', BlogListView.as_view(), name="index"),   # トップページ
     path('admin/', admin.site.urls),
 ]
