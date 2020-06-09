@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path
 
 from blog.views import BlogListView
+from blog.views import BlogDetailView
 # リクエスト → url.py  → ビュー → テンプレート → レスポンス
 urlpatterns = [
     # path('<URL>', views(関数), ニックネーム),
     path('', BlogListView.as_view(), name="index"),   # トップページ
+    path('<int:pk>', BlogDetailView.as_view(), name="detail"),  #詳細表示ページ
+    # int(整数)をpk(primary key、変数)に代入するような設定（localhost:8000/ココの数字のこと）
     path('admin/', admin.site.urls),
 ]
