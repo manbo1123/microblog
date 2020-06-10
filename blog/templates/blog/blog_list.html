@@ -1,11 +1,19 @@
+{#  {% プログラムの命令(表示されない、組み込みタグ) %} #}
+{# {{ 値の表示 }} #}
 {% extends "base.html" %}
 {% block body %}
-  {#  {% プログラムの命令(表示されない、組み込みタグ) %} #}
-  {# {{ 値の表示 }} #}
-  {% for blog in object_list %}
-    <div>
-      {{ blog.content }}<br>
-      {{ blog.posted_date }}
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      {% for blog in object_list %}
+        <div class="post-preview">
+          <a href="#">
+            <h2 class="post-title">
+              {{ blog.content }}
+            </h2>
+          </a>
+          <p class="post-meta">{{ blog.posted_date }}</p>
+        </div>
+      {% endfor %}
     </div>
-  {% endfor %}
+  </div>
 {% endblock %}
