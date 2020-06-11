@@ -18,11 +18,16 @@ from django.urls import path
 
 from blog.views import BlogListView
 from blog.views import BlogDetailView
+from blog.views import BlogCreateView, BlogUpdateView, BlogDeleteView
 # リクエスト → url.py  → ビュー → テンプレート → レスポンス
 urlpatterns = [
     # path('<URL>', views(関数), ニックネーム),
     path('', BlogListView.as_view(), name="index"),   # トップページ
     path('<int:pk>', BlogDetailView.as_view(), name="detail"),  #詳細表示ページ
+    path('<int:pk>/update', BlogUpdateView.as_view(), name="update"), # 更新
+    path('<int:pk>/delete', BlogDeleteView.as_view(), name="delete"), # 削除
     # int(整数)をpk(primary key、変数)に代入するような設定（localhost:8000/ココの数字のこと）
+
+    path('create', BlogCreateView.as_view(), name="create"),
     path('admin/', admin.site.urls),
 ]
