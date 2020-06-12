@@ -14,19 +14,24 @@ from .forms import BlogForm
 # トップページ
 class BlogListView(ListView):  # BlogListViewクラスを定義し、ListViewを継承
   model = Blog   # BlogListViewクラスとBlogモデルを関連付ける
+  context_object_name = "blogs"
 
 #詳細表示ページ
 class BlogDetailView(DetailView):
-   model = Blog  
+  model = Blog
+  context_object_name = "blog"
 
 class BlogCreateView(CreateView):
   model = Blog
   form_class = BlogForm
   success_url = reverse_lazy("index")
+  template_name = "blog/blog_create_form.html"
 
 class BlogUpdateView(UpdateView):
   model = Blog
   form_class = BlogForm
+  template_name = "blog/blog_update_form.html"
+
   def get_success_url(self):
     blog_pk = self.kwargs["pk"]
     url = reverse_lazy("detail", kwargs={"pk":blog_pk})

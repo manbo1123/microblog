@@ -4,10 +4,12 @@
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <div class="post-preview">
         <h2 class="post-title">
-          {{ object.content }}
+          {{ blog.content }}
         </h2>
-        <p class="post-meta">{{ object.posted_date }}</p>
+        <p class="post-meta">{{ blog.posted_date }}</p>
       </div>
+      <a href="{% url 'update' object.id %}" class="btn btn-primary">編集</a>
+      <a href="{% url 'delete' object.id %}" class="btn btn-danger">削除</a>
     </div>
   </div>
 {% endblock %}
