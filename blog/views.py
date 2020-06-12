@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 from django.views.generic import ListView    # ListViewはdjango.views.genericに定義されているので、インポート
 from django.views.generic import DetailView  # 詳細表示ページ
@@ -15,6 +16,7 @@ from .forms import BlogForm
 class BlogListView(ListView):  # BlogListViewクラスを定義し、ListViewを継承
   model = Blog   # BlogListViewクラスとBlogモデルを関連付ける
   context_object_name = "blogs"
+  paginate_by = 3
 
 #詳細表示ページ
 class BlogDetailView(DetailView):
@@ -27,6 +29,14 @@ class BlogCreateView(CreateView):
   success_url = reverse_lazy("index")
   template_name = "blog/blog_create_form.html"
 
+  def form_valid(self, form):
+    messages.success(self.request, "保存しました")
+    return super().form_valid(form)
+
+  def form_invalid(self, form):
+    messages.error(self.request, "保存に失敗しました")
+    return super().form_invalid(form)
+
 class BlogUpdateView(UpdateView):
   model = Blog
   form_class = BlogForm
@@ -36,7 +46,19 @@ class BlogUpdateView(UpdateView):
     blog_pk = self.kwargs["pk"]
     url = reverse_lazy("detail", kwargs={"pk":blog_pk})
     return url
+  
+  def form_valid(self, form):
+    messages.success(self.request, "更新されました")
+    return super().form_valid(form)
+
+  def form_invalid(self, form):
+    messages.error(self.request, "更新に失敗しました")
+    return super().form_invalid(form)
 
 class BlogDeleteView(DeleteView):
   model = Blog
   success_url = reverse_lazy("index")
+
+  def delete(self, request, *args, **kwargs):
+    messages.error(self.request, "削除しました")
+    return super().delete(request, *args, **kwargs)
