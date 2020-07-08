@@ -11,9 +11,10 @@
 - ユーザー登録機能
 - ブログ投稿・更新・削除機能
 
-##### トップページ
-[toppage](https://gyazo.com/560ce628985c22f3b113f6d59878a85b)
-[blog](https://gyazo.com/eb05f1b062f61e154aae80db33ef80c5)
+### トップページ
+<img src="https://gyazo.com/560ce628985c22f3b113f6d59878a85b/raw" width="500">
 
-##### adminサイト
-[admin](https://gyazo.com/973dc89b98e883df81f1f435125122a6)
+<img src="https://gyazo.com/eb05f1b062f61e154aae80db33ef80c5/raw" width="500">
+
+### adminサイト
+<img src="https://gyazo.com/973dc89b98e883df81f1f435125122a6/raw" width="500">
